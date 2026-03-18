@@ -1,0 +1,49 @@
+Thanks for sharing the terminal output — that helps a lot. The issue is that you’re trying to run your file as a **Kotlin script**, but your file (`first.kt`) is a **regular Kotlin source file**, not a `.kts` script. That’s why `-script` keeps failing with “unrecognized script type.”
+
+---
+
+## ✅ How to Run Your File
+
+Since your file is `first.kt` (not `first.kts`), you should **compile and run it** instead of using `-script`.
+
+1. **Compile to JAR**
+   ```bash
+   kotlinc first.kt -include-runtime -d first.jar
+   ```
+
+   - This compiles `first.kt` into a runnable JAR file called `first.jar`.
+
+2. **Run the JAR**
+   ```bash
+   java -jar first.jar
+   ```
+
+   - This executes your Kotlin program.
+
+---
+
+## ⚡ If You Want Script Mode
+- Rename the file to `first.kts` (note the `.kts` extension).
+- Then run:
+  ```bash
+  kotlinc -script first.kts
+  ```
+- `.kts` files are meant for quick scripts (like one‑liners or small utilities), while `.kt` files are for full programs with `fun main()`.
+
+---
+
+## 🔍 Quick Checklist
+- Use `.kt` → compile with `kotlinc` and run with `java -jar`.
+- Use `.kts` → run directly with `kotlinc -script`.
+- Make sure your file has a `main` function if it’s a `.kt` program:
+  ```kotlin
+  fun main() {
+      println("Hello, Kotlin!")
+  }
+  ```
+
+---
+
+👉 Since you already have `hello_tanzania.jar` in your folder, it looks like you successfully compiled another file before. Try the same process with `first.kt` and it should work.  
+
+Do you want me to walk you through setting up a **VS Code task** so you can run Kotlin files with a single shortcut instead of typing these commands every time?
