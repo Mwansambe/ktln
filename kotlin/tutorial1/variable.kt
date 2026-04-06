@@ -8,7 +8,11 @@ println("${a == b}")
 
 println("Entet the number of your choice")
 val input = readln()
-println(input)
+
+var toNumber = input.toIntOrNull()
+var isEven = toNumber % 2 == 0
+
+println("is the number $toNumber even: $isEven}")
 
 
 
